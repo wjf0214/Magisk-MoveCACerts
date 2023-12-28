@@ -1,0 +1,6 @@
+id=MoveCACerts
+name=MoveCACerts
+version=v1.0.0
+versionCode=1
+author=wjf0214
+description=将自定义CA证书添加到系统信任存储区，支持安卓14。
