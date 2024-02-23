@@ -1,6 +1,7 @@
 id=MoveCACerts
 name=MoveCACerts
-version=v1.1.0
-versionCode=2
+version=v1.1.1
+versionCode=3
 author=wjf0214
 description=将自定义CA证书添加到系统信任存储区，支持安卓14。
+updateJson=https://raw.githubusercontent.com/wjf0214/Magisk-MoveCACerts/master/update.json
