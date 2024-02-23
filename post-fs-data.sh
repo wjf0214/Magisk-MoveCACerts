@@ -56,6 +56,10 @@ if [ -d /apex/com.android.conscrypt/cacerts ]; then
     CERTS_NUM="$(ls -1 "$TEMP_DIR" | wc -l)"
     if [ "$CERTS_NUM" -gt 10 ]; then
         mount -o bind "$TEMP_DIR" /apex/com.android.conscrypt/cacerts
+        for pid in 1 $(pgrep zygote) $(pgrep zygote64); do
+            nsenter --mount=/proc/${pid}/ns/mnt -- \
+                mount --bind "$TEMP_DIR" /apex/com.android.conscrypt/cacerts
+        done
         echo "[$(date +%F) $(date +%T)] - The number of certificates is: $CERTS_NUM ,Mounted successfully!"
     else
         echo "[$(date +%F) $(date +%T)] - The number of certificates is: $CERTS_NUM , the number is too low, for security reasons, cancel the replacement of CA storage"
